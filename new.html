@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="orderText">Hi this is me</h1>
+    <h1 id="newTextDAta">Hi this Not Me</h1>
+    <button onclick="handlebtn()">on click</button>
+    <script>
+      function setTextById(elementId, newText) {
+        const elementField = document.getElementById(elementId);
+        const newTextInfomation = document.getElementById(newText).innerText;
+        elementField.innerText = newTextInfomation;
+      }
+      function handlebtn() {
+        console.log('hi')
+        setTextById("newTextDAta", "orderText");
+      }
+    </script>
+  </body>
+</html>

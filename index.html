@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <header>
+      <div class="navbar bg-base-300">
+        <div class="navbar-start">
+          <div class="dropdown">
+            <label tabindex="0" class="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </label>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li><a>Item 1</a></li>
+              <li>
+                <a>Parent</a>
+                <ul class="p-2">
+                  <li><a>Submenu 1</a></li>
+                  <li><a>Submenu 2</a></li>
+                </ul>
+              </li>
+              <li><a>Item 3</a></li>
+            </ul>
+          </div>
+          <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal px-1">
+            <li><a>Item 1</a></li>
+            <li tabindex="0">
+              <details>
+                <summary>Parent</summary>
+                <ul class="p-2">
+                  <li><a>Submenu 1</a></li>
+                  <li><a>Submenu 2</a></li>
+                </ul>
+              </details>
+            </li>
+            <li><a>Item 3</a></li>
+          </ul>
+        </div>
+        <div class="navbar-end">
+          <a class="btn">Button</a>
+        </div>
+      </div>
+    </header>
+    <main class="p-2">
+      <div class="flex">
+        <div class="w-9/12">
+          <div class="grid grid-cols-3 gap-3">
+            <div class="card bg-red-300 shadow-xl items-center">
+              <div class="p-2">
+                <img
+                  src="/Asset/Rectangle4.png"
+                  class="rounded-lg"
+                  width="200px"
+                  alt="Shoes"
+                />
+              </div>
+              <div class="card-body">
+                <h2 class="card-title" id="flowerName1">Snow Blue</h2>
+                <p class="pb-0 m-0">
+                  If a dog chews shoes whose shoes does he choose?
+                </p>
+                <p class="pb-0 m-0 font-bold">
+                  $ <span id="itemPrice">50</span>
+                </p>
+                <div class="card-actions justify-start p-0 mt-0">
+                  <button
+                    onclick="handleAddToCart('itemPrice','previousTotal','flowerName1')"
+                    class="btn btn-primary"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card bg-red-300 shadow-xl items-center">
+              <div class="p-2">
+                <img
+                  src="/Asset/Rectangle5.png"
+                  class="rounded-lg"
+                  width="200px"
+                  alt="Shoes"
+                />
+              </div>
+              <div class="card-body">
+                <h2 class="card-title" id="flowerName">Snow White</h2>
+                <p class="pb-0 m-0">
+                  If a dog chews shoes whose shoes does he choose?
+                </p>
+                <p class="pb-0 m-0 font-bold">
+                  $ <span id="itemPrice1">30</span>
+                </p>
+                <div class="card-actions justify-start p-0 mt-0">
+                  <button
+                    onclick="handleAddToCart('itemPrice1','previousTotal','flowerName')"
+                    class="btn btn-primary"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card bg-red-300 shadow-xl items-center">
+              <div class="p-2">
+                <img
+                  src="/Asset/Rectangle6.png"
+                  class="rounded-lg"
+                  width="200px"
+                  alt="Shoes"
+                />
+              </div>
+              <div class="card-body">
+                <h2 class="card-title" id="flowername2">Snow Red</h2>
+                <p class="pb-0 m-0">
+                  If a dog chews shoes whose shoes does he choose?
+                </p>
+                <p class="pb-0 m-0 font-bold">
+                  $ <span id="itemPrice2">100</span>
+                </p>
+                <div class="card-actions justify-start p-0 mt-0">
+                  <button
+                    onclick="handleAddToCart('itemPrice2','previousTotal','flowername2')"
+                    class="btn btn-primary"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-3/12 p-10 text-right font-bold text-2xl my-3">
+          <h1>Code: <span id="newTextInfo">Hero</span></h1>
+          <h1>Total:<span id="previousTotal">00</span></h1>
+          <h1>Discount:<span id="previousDiscount">00</span></h1>
+          <h1>Grand Total:<span id="finalValue">00</span></h1>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script>
+    function getElementTextById(elementId) {
+      const elementField = document.getElementById(elementId).innerText;
+      const elementValue = parseFloat(elementField);
+      return elementValue;
+    }
+    function setTextById(newText) {
+        const elementField = document.getElementById('newTextInfo');
+        const newTextInfomation = document.getElementById(newText).innerText;
+        elementField.innerText = newTextInfomation;
+      }
+    function setElementTotalbyId(elementId, newValue) {
+      const balance = document.getElementById(elementId);
+      balance.innerText = newValue;
+    }
+    function handleAddToCart(itemValue, previousValue,newTextData) {
+      const itemPrice = getElementTextById(itemValue);
+      const PreviousTotalAmount = getElementTextById(previousValue);
+      const newBalance = itemPrice + PreviousTotalAmount;
+      setElementTotalbyId(previousValue, newBalance);
+      const discountValue = newBalance * 0.1;
+      setElementTotalbyId("previousDiscount",parseFloat(discountValue.toFixed(2)));
+      const FinalValue = newBalance - discountValue;
+      setElementTotalbyId("finalValue", parseFloat(FinalValue.toFixed(2)));
+      setTextById(newTextData)
+    }
+  </script>
+</html>
